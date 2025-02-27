@@ -9,7 +9,7 @@
     <style>
         /* Global Styling */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: #ffffff;
             color: #4a4a4a;
         }
@@ -148,9 +148,11 @@
                 <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
                 <li class="nav-item">
-                    <a class="nav-link contact-btn" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
+                    <a class="nav-link contact-btn" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Book Appointment</a>
                 </li>
             </ul>
         </div>
@@ -161,59 +163,112 @@
 
 
    <!-- Hero Section -->
-<section id="home" class="hero-section">
-    <div class="overlay">
-        <div class="container text-center">
-            <h1 class="hero-title">Welcome to Gautami Eye & Maternity Hospital</h1>
-            <p class="hero-subtitle">Your Trusted Healthcare Partner for a Healthier Tomorrow</p>
-            <a href="#services" class="btn btn-lg btn-primary">Explore Services</a>
-        </div>
+<section id="hero" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container text-center">
+        <h1 class="hero-title">Gautami Eye and Maternity Hospital</h1>
+        <p class="hero-subtitle">Your Health, Our Priority</p>
+        <a href="#services" class="hero-btn">Explore Services</a>
+    </div>
+    
+    <!-- Floating Icons -->
+    <div class="floating-icons">
+        <i class="fas fa-heartbeat floating-icon"></i>
+        <i class="fas fa-user-md floating-icon"></i>
+        <i class="fas fa-stethoscope floating-icon"></i>
+        <i class="fas fa-pills floating-icon"></i>
     </div>
 </section>
-<script>
+
+<style>
 /* Hero Section Styling */
 .hero-section {
-    background: url('hero-image.jpg') no-repeat center center/cover;
-    height: 90vh; /* Adjust based on design */
-    display: flex;
-    align-items: center;
     position: relative;
-    color: white;
-}
-
-/* Overlay for Better Text Visibility */
-.overlay {
-    background: rgba(0, 0, 0, 0.6); /* Dark transparent overlay */
-    width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 50px;
+    color: white;
+    background: url('assets/hero.jpg') no-repeat center center/cover;    
+    overflow: hidden;
 }
 
-/* Hero Section Text */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
 .hero-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    position: relative;
+    opacity: 0;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    position: relative;
+    opacity: 0;
 }
 
-/* Button Styling */
-.btn-lg {
+.hero-btn {
+    display: inline-block;
     padding: 12px 25px;
+    background: #28a745;
+    color: white;
     font-size: 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
     font-weight: bold;
-    border-radius: 30px;
+    transition: 0.3s ease;
+    position: relative;
+    opacity: 0;
 }
+
+.hero-btn:hover {
+    background: #218838;
+}
+
+/* Floating Icons */
+.floating-icons {
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+}
+
+.floating-icon {
+    animation: floatAnimation 6s infinite ease-in-out alternate;
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+</style>
+
+<!-- GSAP Animation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    gsap.to(".hero-title", { opacity: 1, y: -20, duration: 1, delay: 0.5 });
+    gsap.to(".hero-subtitle", { opacity: 1, y: -20, duration: 1, delay: 0.8 });
+    gsap.to(".hero-btn", { opacity: 1, y: -20, duration: 1, delay: 1.2 });
+});
 </script>
      
   <!-- Contact Us Modal -->
@@ -221,7 +276,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+                <h5 class="modal-title" id="contactModalLabel">Book Appointment</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -371,7 +426,9 @@ document.getElementById("contactForm").addEventListener("submit", async function
                     </div>
                 </div>
             </div>
-            <!-- Controls -->
+            
+
+<!-- Controls -->
             <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-success rounded-circle p-3" aria-hidden="true"></span>
             </button>
@@ -383,89 +440,341 @@ document.getElementById("contactForm").addEventListener("submit", async function
 </section>
 
 
-   <!-- Doctors Section -->
-<section id="doctors" class="py-5 bg-light">
+
+
+<!-- Blog Section -->
+<section id="blog" class="py-5">
     <div class="container">
-        <h2 class="text-center mb-4">Meet Our Expert Doctors</h2>
-        <div class="row">
-            <!-- Doctor 1 -->
-            <div class="col-md-4">
-                <div class="doctor-card text-center p-4 shadow-lg rounded">
-                    <img src="doctor1.jpg" class="img-fluid rounded-circle mb-3" alt="Dr. Arjun Reddy">
-                    <h5>Dr. Arjun Reddy</h5>
-                    <p class="text-muted">Senior Surgeon</p>
-                    <p><strong>Experience:</strong> 15+ years</p>
-                    <p>⭐⭐⭐⭐⭐ (4.9/5)</p>
-                </div>
-            </div>
+        <h2 class="text-center mb-4">📰Latest Blog Posts</h2>
+        <ul class="blog-list">
+            <li class="blog-item" onclick="openModal('blog1')">
+                <h3>🌿 5 Tips for a Healthy Lifestyle</h3>
+                <p class="blog-meta">Published on Feb 14, 2025 • by Dr. Aditi Sharma</p>
+            </li>
+            <li class="blog-item" onclick="openModal('blog2')">
+                <h3>🩺 Importance of Regular Health Checkups</h3>
+                <p class="blog-meta">Published on Jan 20, 2025 • by Dr. Ramesh Mehta</p>
+            </li>
+            <li class="blog-item" onclick="openModal('blog3')">
+                <h3>🥗 How Diet Affects Your Mental Health</h3>
+                <p class="blog-meta">Published on Dec 10, 2024 • by Dr. Priya Verma</p>
+            </li>
+        </ul>
+    </div>
 
-            <!-- Doctor 2 -->
-            <div class="col-md-4">
-                <div class="doctor-card text-center p-4 shadow-lg rounded">
-                    <img src="doctor2.jpg" class="img-fluid rounded-circle mb-3" alt="Dr. Priya Sharma">
-                    <h5>Dr. Priya Sharma</h5>
-                    <p class="text-muted">Gynaecologist</p>
-                    <p><strong>Experience:</strong> 12+ years</p>
-                    <p>⭐⭐⭐⭐ (4.7/5)</p>
-                </div>
-            </div>
-
-            <!-- Doctor 3 -->
-            <div class="col-md-4">
-                <div class="doctor-card text-center p-4 shadow-lg rounded">
-                    <img src="doctor3.jpg" class="img-fluid rounded-circle mb-3" alt="Dr. Rakesh Mehta">
-                    <h5>Dr. Rakesh Mehta</h5>
-                    <p class="text-muted">Eye Specialist</p>
-                    <p><strong>Experience:</strong> 10+ years</p>
-                    <p>⭐⭐⭐⭐⭐ (4.8/5)</p>
-                </div>
-            </div>
+    <!-- Blog Modal (Hidden by Default) -->
+    <div id="blogModal" class="blog-modal">
+        <div class="blog-modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
         </div>
     </div>
 </section>
 
 <style>
-.doctor-card {
-    transition: transform 0.3s ease-in-out;
+/* Blog Section */
+.blog-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: auto;
+}
+
+.blog-item {
+    padding: 20px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
+    border-left: 5px solid #28a745;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.blog-item:hover {
+    background: #e9f5ea;
+    transform: scale(1.02);
+}
+
+.blog-item h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #28a745;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Modal Styling */
+.blog-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-modal-content {
     background: white;
-    border: 2px solid #28a745; /* Green border */
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+    position: relative;
 }
 
-.doctor-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.doctor-card img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border: 5px solid #28a745; /* Green border */
-    border-radius: 50%;
-}
-
-.doctor-card h5 {
-    color: #28a745; /* Green text */
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.doctor-card p {
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
     color: #555;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+/* Modal Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>
 
-    <!-- Map Section -->
-    <section id="map" class="py-5">
-        <div class="container map-container">
-            <a href="https://g.co/kgs/r45Gi2P" class="visit-link" target="_blank">Visit Here</a>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509453!2d144.95592831531693!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df11f0b57%3A0x5045675218ce7e33!2sGoogle!5e0!3m2!1sen!2sin!4v1616631523827!5m2!1sen!2sin" allowfullscreen=""></iframe>
+<script>
+// Blog Content Data
+const blogData = {
+    blog1: {
+        title: "5 Tips for a Healthy Lifestyle",
+        content: "<p>Maintaining a healthy lifestyle is essential for overall well-being. Here are five tips...</p><ul><li>Eat a balanced diet</li><li>Exercise regularly</li><li>Stay hydrated</li><li>Get enough sleep</li><li>Manage stress effectively</li></ul>"
+    },
+    blog2: {
+        title: "Importance of Regular Health Checkups",
+        content: "<p>Regular health checkups help detect potential health issues early...</p><p>Make sure to visit your doctor at least once a year...</p>"
+    },
+    blog3: {
+        title: "How Diet Affects Your Mental Health",
+        content: "<p>Your diet plays a huge role in mental well-being. Foods rich in omega-3 and vitamins...</p>"
+    }
+};
+
+// Open Blog Modal
+function openModal(blogId) {
+    const modal = document.getElementById("blogModal");
+    const modalContent = document.getElementById("modalContent");
+    
+    if (blogData[blogId]) {
+        modalContent.innerHTML = `<h2>${blogData[blogId].title}</h2>${blogData[blogId].content}`;
+        modal.style.display = "flex";
+    }
+}
+
+// Close Modal
+function closeModal() {
+    document.getElementById("blogModal").style.display = "none";
+}
+</script>
+
+</style>
+<!-- Doctors Section -->
+<section id="doctors" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">👨‍⚕️ Meet Our Expert Doctors</h2>
+        <div class="row justify-content-center">
+            <!-- Doctor 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="doctor-card">
+                    <div class="doctor-info">
+                        <h5>Dr. Arjun Reddy</h5>
+                        <p class="text-muted">Senior Surgeon</p>
+                        <p><strong>Experience:</strong> 15+ years</p>
+                        <p class="stars">⭐⭐⭐⭐⭐ (4.9/5)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="doctor-card">
+                    <div class="doctor-info">
+                        <h5>Dr. Priya Sharma</h5>
+                        <p class="text-muted">Gynaecologist</p>
+                        <p><strong>Experience:</strong> 12+ years</p>
+                        <p class="stars">⭐⭐⭐⭐ (4.7/5)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="doctor-card">
+                    <div class="doctor-info">
+                        <h5>Dr. Rakesh Mehta</h5>
+                        <p class="text-muted">Eye Specialist</p>
+                        <p><strong>Experience:</strong> 10+ years</p>
+                        <p class="stars">⭐⭐⭐⭐⭐ (4.8/5)</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+<style>
+/* Modern Doctor Card with Border */
+.doctor-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    border: 3px solid transparent; /* Transparent Border */
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Green Gradient Border */
+.doctor-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 2px;
+    background: linear-gradient(45deg, #28a745, #6dd5ed);
+    -webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+    mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+    -webkit-mask-composite: exclude;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Hover Effect */
+.doctor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25);
+    border-color: #28a745; /* Green Border on Hover */
+}
+
+/* Doctor Info */
+.doctor-info h5 {
+    font-size: 1.5rem;
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.doctor-info p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Star Ratings */
+.stars {
+    font-size: 1.2rem;
+    color: #f4b400;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .doctor-card {
+        padding: 20px;
+    }
+    
+    .doctor-info h5 {
+        font-size: 1.3rem;
+    }
+
+    .doctor-info p {
+        font-size: 1rem;
+    }
+}
+</style>
+
+
+    <!-- Map Section -->
+<section id="map" class="py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">📍 Find Us on Google Maps</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509453!2d144.95592831531693!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df11f0b57%3A0x5045675218ce7e33!2sGoogle!5e0!3m2!1sen!2sin!4v1616631523827!5m2!1sen!2sin" 
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+            <a href="https://g.co/kgs/r45Gi2P" class="visit-link" target="_blank">Visit Us on Google Maps</a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Map Section Styling */
+#map {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 60px 0;
+}
+
+.map-container {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 12px;
+}
+
+/* Visit Link */
+.visit-link {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.visit-link:hover {
+    background-color: #218838;
+    text-decoration: none;
+}
+</style>
+
+
+
 <!-- Contact Section -->
 <section id="contact" class="contact-section">
     <div class="container">
@@ -486,33 +795,50 @@ document.getElementById("contactForm").addEventListener("submit", async function
         </div>
     </div>
 </section>
+
 <style>
-/* Contact Section Styling */
+/* Modern Contact Section */
 .contact-section {
     text-align: center;
-    background: #28a745; /* Solid Green Background */
-    color: white;
-    padding: 50px 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    padding: 60px 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
     width: 80%;
     margin: auto;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Title Styling */
+/* Contact Title */
 .contact-title {
-    font-size: 2.2rem;
-    margin-bottom: 25px;
+    font-size: 2.5rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    color: #28a745;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Animated Title Underline */
+.contact-title::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: #28a745;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    border-radius: 2px;
 }
 
 /* Contact Details */
 .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 /* Contact Items */
@@ -520,33 +846,39 @@ document.getElementById("contactForm").addEventListener("submit", async function
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    font-size: 19px;
-    background: white; /* White Background */
-    color: #28a745; /* Green Text */
-    padding: 18px;
-    border-radius: 10px;
-    transition: 0.3s ease-in-out;
-    width: 60%;
+    gap: 15px;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.3);
+    color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.4s ease-in-out;
+    width: 70%;
     margin: auto;
-    border: 2px solid #28a745;
+    border: 2px solid rgba(40, 167, 69, 0.5);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
 }
 
+/* Hover Effects */
 .contact-item:hover {
     background: #28a745;
     color: white;
     transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
 }
 
 /* Icons */
 .contact-item i {
-    font-size: 26px;
-    color: #28a745; /* Green Icons */
-    transition: color 0.3s ease-in-out;
+    font-size: 28px;
+    color: #28a745;
+    transition: 0.3s ease-in-out;
 }
 
+/* Hover Effect on Icons */
 .contact-item:hover i {
     color: white;
+    transform: rotate(10deg);
 }
 
 /* Links */
@@ -560,6 +892,22 @@ document.getElementById("contactForm").addEventListener("submit", async function
 .contact-section a:hover {
     text-decoration: underline;
     color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section {
+        width: 90%;
+    }
+
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    .contact-item {
+        width: 90%;
+        padding: 15px;
+    }
 }
 </style>
 
