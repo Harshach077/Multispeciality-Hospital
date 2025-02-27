@@ -441,11 +441,10 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
 
 
-
 <!-- Blog Section -->
 <section id="blog" class="py-5">
     <div class="container">
-        <h2 class="text-center mb-4">📰Latest Blog Posts</h2>
+        <h2 class="text-center mb-4">📰 Latest Blog Posts</h2>
         <ul class="blog-list">
             <li class="blog-item" onclick="openModal('blog1')">
                 <h3>🌿 5 Tips for a Healthy Lifestyle</h3>
@@ -461,13 +460,39 @@ document.getElementById("contactForm").addEventListener("submit", async function
             </li>
         </ul>
     </div>
-
-    <!-- Blog Modal (Hidden by Default) -->
-   <div class="blog-modal-content">
-    <span class="close-btn" onclick="closeModal()">×</span>
-    <div id="modalContent"></div>
-</div>
 </section>
+
+<!-- Blog Modals (Hidden by Default) -->
+<div id="blog1" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('blog1')">×</span>
+        <h2>5 Tips for a Healthy Lifestyle</h2>
+        <p>Maintaining a healthy lifestyle is essential for overall well-being. Here are five tips:</p>
+        <ul>
+            <li>Eat a balanced diet</li>
+            <li>Exercise regularly</li>
+            <li>Stay hydrated</li>
+            <li>Get enough sleep</li>
+            <li>Manage stress effectively</li>
+        </ul>
+    </div>
+</div>
+
+<div id="blog2" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('blog2')">×</span>
+        <h2>Importance of Regular Health Checkups</h2>
+        <p>Regular health checkups help detect potential health issues early. Make sure to visit your doctor at least once a year for a full-body checkup.</p>
+    </div>
+</div>
+
+<div id="blog3" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('blog3')">×</span>
+        <h2>How Diet Affects Your Mental Health</h2>
+        <p>Your diet plays a huge role in mental well-being. Foods rich in omega-3 and vitamins can improve mood and brain function.</p>
+    </div>
+</div>
 
 <style>
 /* Blog Section */
@@ -485,8 +510,6 @@ document.getElementById("contactForm").addEventListener("submit", async function
     border-left: 5px solid #28a745;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
     border-radius: 5px;
 }
 
@@ -507,8 +530,8 @@ document.getElementById("contactForm").addEventListener("submit", async function
 }
 
 /* Modal Styling */
-.blog-modal {
-    display: none;
+.modal {
+    display: none; /* Hidden by default */
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -516,20 +539,19 @@ document.getElementById("contactForm").addEventListener("submit", async function
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.blog-modal-content {
+.modal-content {
     background: white;
     padding: 30px;
     width: 80%;
     max-width: 600px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease-in-out;
     position: relative;
+    text-align: left;
 }
 
 .close-btn {
@@ -544,56 +566,21 @@ document.getElementById("contactForm").addEventListener("submit", async function
 .close-btn:hover {
     color: red;
 }
-
-/* Modal Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 </style>
 
 <script>
-// Blog Content Data
-const blogData = {
-    blog1: {
-        title: "5 Tips for a Healthy Lifestyle",
-        content: "<p>Maintaining a healthy lifestyle is essential for overall well-being. Here are five tips...</p><ul><li>Eat a balanced diet</li><li>Exercise regularly</li><li>Stay hydrated</li><li>Get enough sleep</li><li>Manage stress effectively</li></ul>"
-    },
-    blog2: {
-        title: "Importance of Regular Health Checkups",
-        content: "<p>Regular health checkups help detect potential health issues early...</p><p>Make sure to visit your doctor at least once a year...</p>"
-    },
-    blog3: {
-        title: "How Diet Affects Your Mental Health",
-        content: "<p>Your diet plays a huge role in mental well-being. Foods rich in omega-3 and vitamins...</p>"
-    }
-};
-
-// Open Blog Modal
-function openModal(content) {
-    const modal = document.querySelector(".blog-modal-content");
-    document.getElementById("modalContent").innerHTML = content;
-    modal.style.display = "block"; // Show modal
+// Open Modal
+function openModal(blogId) {
+    document.getElementById(blogId).style.display = "flex";
 }
 
-function closeModal() {
-    const modal = document.querySelector(".blog-modal-content");
-    modal.style.display = "none"; // Hide modal
+// Close Modal
+function closeModal(blogId) {
+    document.getElementById(blogId).style.display = "none";
 }
-
-// Hide modal on page load
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".blog-modal-content").style.display = "none";
-});
 </script>
 
-</style>
+
 <!-- Doctors Section -->
 <section id="doctors" class="py-5">
     <div class="container">
@@ -925,8 +912,11 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
-
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+       
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>
