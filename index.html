@@ -463,12 +463,10 @@ document.getElementById("contactForm").addEventListener("submit", async function
     </div>
 
     <!-- Blog Modal (Hidden by Default) -->
-    <div id="blogModal" class="blog-modal">
-        <div class="blog-modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="modalContent"></div>
-        </div>
-    </div>
+   <div class="blog-modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <div id="modalContent"></div>
+</div>
 </section>
 
 <style>
@@ -578,20 +576,21 @@ const blogData = {
 };
 
 // Open Blog Modal
-function openModal(blogId) {
-    const modal = document.getElementById("blogModal");
-    const modalContent = document.getElementById("modalContent");
-    
-    if (blogData[blogId]) {
-        modalContent.innerHTML = `<h2>${blogData[blogId].title}</h2>${blogData[blogId].content}`;
-        modal.style.display = "flex";
-    }
+function openModal(content) {
+    const modal = document.querySelector(".blog-modal-content");
+    document.getElementById("modalContent").innerHTML = content;
+    modal.style.display = "block"; // Show modal
 }
 
-// Close Modal
 function closeModal() {
-    document.getElementById("blogModal").style.display = "none";
+    const modal = document.querySelector(".blog-modal-content");
+    modal.style.display = "none"; // Hide modal
 }
+
+// Hide modal on page load
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".blog-modal-content").style.display = "none";
+});
 </script>
 
 </style>
