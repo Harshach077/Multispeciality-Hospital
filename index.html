@@ -18,7 +18,8 @@
 .navbar {
     background-color: #28a745;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
-    padding: 12px 0; /* Adjust padding for better spacing */
+    padding-top: 70px;
+    padding: 20px 0; /* Adjust padding for better spacing */
 }
 
 /* Logo Styling */
@@ -84,13 +85,7 @@
             color: #ff6700;
         }
 
-         /* About Section */
-        #about {
-            padding: 4rem 0;
-            background-color: #f8f9fa;
-            text-align: center;
-        }
-
+       
         /* Services Carousel */
         .carousel-item img {
             width: 100%;
@@ -137,7 +132,7 @@
 
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #28a745;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #28a745;">
     <div class="container">
         <a class="navbar-brand" href="#home">MULTISPECIALITY HOSPITAL</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -149,7 +144,6 @@
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-
                 <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
                 <li class="nav-item">
                     <a class="nav-link contact-btn" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Book Appointment</a>
@@ -242,7 +236,7 @@
 .floating-icons {
     position: absolute;
     width: 100%;
-    top: 50px;
+    top: 90px;
     left: 0;
     display: flex;
     justify-content: space-around;
@@ -356,46 +350,129 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
 
 
-       <!-- About Section -->
-<section id="about" class="py-5 bg-light">
+     <!-- Include AOS Library -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- About Section -->
+<section id="about">
     <div class="container">
-        <div class="text-center mb-4">
-            <h2 class="fw-bold">About Us</h2>
+        <div class="text-center" data-aos="fade-up">
+            <h2>About Us</h2>
             <p class="text-muted">Caring for You with Excellence in Eye & Maternity Health</p>
         </div>
-        
-        <div class="row align-items-center">
+
+        <div class="about-content">
             <!-- About Image -->
-            <div class="col-md-6">
-               <img src="assets/hospital.jpg" alt="Hospital Image" class="img-fluid rounded shadow" style="width: 600px; height: 400px;">
+            <div class="about-img" data-aos="fade-right">
+                <img src="assets/hospital.jpg" alt="Hospital Image">
             </div>
 
-            <!-- About Content -->
-            <div class="col-md-6">
-                <h3 class="text-primary">Gautami Eye & Maternity Hospital</h3>
+            <!-- About Text -->
+            <div class="about-text" data-aos="fade-left">
+                <h3>Gautami Eye & Maternity Hospital</h3>
                 <p>
-                    Gautami Eye & Maternity Hospital is a **leading multispeciality healthcare center** dedicated to 
-                    **exceptional ophthalmology (eye care) and maternity services**. We combine state-of-the-art 
-                    medical technology with compassionate care to provide **personalized and effective treatments** 
-                    for our patients.
+                    Gautami Eye & Maternity Hospital is a <strong>leading multispeciality healthcare center</strong> 
+                    dedicated to <strong>exceptional ophthalmology (eye care) and maternity services</strong>. 
+                    We combine state-of-the-art medical technology with compassionate care to provide 
+                    <strong>personalized and effective treatments</strong> for our patients.
                 </p>
-                
+
                 <h4 class="text-success">👩‍⚕️ Our Mission</h4>
                 <p>
-                    Our mission is to deliver **comprehensive, affordable, and advanced medical care** while ensuring 
-                    a **patient-first approach**. We strive to help our patients **regain health and well-being** 
-                    while maintaining the **highest standards of medical ethics and professionalism**.
+                    Our mission is to deliver <strong>comprehensive, affordable, and advanced medical care</strong> 
+                    while ensuring a <strong>patient-first approach</strong>. We strive to help our patients 
+                    <strong>regain health and well-being</strong> while maintaining the <strong>highest standards of medical ethics and professionalism</strong>.
                 </p>
-                
+
                 <h4 class="text-danger">🌍 Our Vision</h4>
                 <p>
-                    Our vision is to be a **leading multispeciality hospital**, recognized for **innovation, excellence, 
-                    and patient satisfaction** in the fields of **eye care and maternity services**.
+                    Our vision is to be a <strong>leading multispeciality hospital</strong>, recognized for 
+                    <strong>innovation, excellence, and patient satisfaction</strong> in the fields of 
+                    <strong>eye care and maternity services</strong>.
                 </p>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Initialize AOS -->
+<script>
+    AOS.init({
+        duration: 1200, // Animation speed (ms)
+        once: true, // Animate only once
+    });
+</script>
+
+
+<style>
+
+/* About Section */
+#about {
+    padding: 5rem 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+#about p.text-muted {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.about-content img {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+    text-align: left;
+}
+
+.about-text h3 {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.about-text h4 {
+    font-weight: bold;
+    margin-top: 1.2rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Animation Effects */
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+
+</style>
 
 
  <!-- Services Section -->
@@ -899,19 +976,66 @@ iframe {
 
 
 
-<!--Start of Tawk.to Script-->
+<!-- Start of Enhanced Tawk.to Script -->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/67c0b5345e4105190cb2b646/1il4c7m8t';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+
+Tawk_API.onLoad = function() {
+    console.log("Tawk.to Chat Loaded Successfully!");
+
+    // Auto-open chat widget after 10 seconds
+    setTimeout(function() {
+        Tawk_API.maximize();
+    }, 10000);
+
+    // Hide chat widget on specific pages (Example: Hide on contact page)
+    if (window.location.pathname.includes("contact")) {
+        Tawk_API.hideWidget();
+    }
+
+    // Pre-fill visitor information
+    Tawk_API.visitor = {
+        name: "Guest",
+        email: "guest@example.com"
+    };
+
+    // Custom welcome message when online
+    Tawk_API.onStatusChange = function(status) {
+        if (status === "online") {
+            Tawk_API.addEvent('Welcome_Message', { message: "Hi there! How can we assist you today?" });
+        }
+    };
+
+    // Detect when a user sends a message
+    Tawk_API.onChatMessage = function(data) {
+        console.log("User Message:", data.text);
+
+        // Auto-reply if the chat is offline
+        Tawk_API.getStatus(function(status) {
+            if (status === "offline") {
+                Tawk_API.addEvent('Auto_Reply', { message: "Support is currently unavailable. Please try again later!" });
+
+                // Send the auto-response to the user
+                Tawk_API.sendMessage({
+                    text: "Sorry, support is currently unavailable. Please try again later!",
+                    type: "chat"
+                });
+            }
+        });
+    };
+};
+
+(function() {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/67c0b5345e4105190cb2b646/1il4c7m8t';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
 })();
 </script>
-<!--End of Tawk.to Script-->
+<!-- End of Enhanced Tawk.to Script -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
